@@ -1,16 +1,18 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navigation from "./components/Navigation";
+import "@/app/globals.css";  // ✅ Tailwind가 적용된 글로벌 CSS 가져오기
+import Navigation from "./component/Navigation";
+import Footer from "./component/footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
+
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata = {
   title: "Next js",
@@ -20,9 +22,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html>
-      <body>
+      <body className="bg-gray-100"> {/* Ensure body has Tailwind classes if needed */}
         <Navigation></Navigation>
-        {children}
+        <main>
+          {children}
+          <div className="flex min-h-screen items-center justify-center bg-gray-100">
+          
+          </div>
+        </main>
+        <Footer></Footer>
       </body>
     </html>
   );
