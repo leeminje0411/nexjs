@@ -1,12 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import Schedule from "./component/schedule";
-import prisma from "./lib/prisma";
+import {supabase} from "./lib/supabase";
+// import prisma from "./lib/prisma";
 
 export default async function Home() {
 
-  const schedules = await prisma.schedule.findMany();
+     let schedules = await supabase
+    .from('schedule')
+    .select('*');
 
+     schedules = schedules.data;
+  
   return (
  <>
     
