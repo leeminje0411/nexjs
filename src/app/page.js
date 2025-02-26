@@ -1,17 +1,34 @@
+
 import React from 'react';
 import Schedule from "./component/schedule";
 import { supabase } from "./lib/supabase";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 
 export default async function Home() {
   console.log('Root page 재렌더링');
   
-  let schedules = await supabase
+  let { data: schedules, error } = await supabase
     .from('schedule')
     .select('*');
-  schedules = schedules.data;
+  
+  if (error) {
+    console.error(error);
+    schedules = [];
+  }
 
   return (
-      <>      <Schedule schedules={schedules}></Schedule></>
+    <>
+      <div>
+ 
+        <FontAwesomeIcon icon={faCalendar} />
+        <FontAwesomeIcon icon={faCalendar} />
+        <FontAwesomeIcon icon={faCalendar} />
+        <FontAwesomeIcon icon={faCalendar} />
+        <FontAwesomeIcon icon={faCalendar} />
+      </div>
+      <Schedule schedules={schedules}></Schedule>
+    </>
   );
 }
 

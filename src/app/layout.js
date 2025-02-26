@@ -3,17 +3,17 @@ import "@/app/globals.css";  // ✅ Tailwind가 적용된 글로벌 CSS 가져�
 import Navigation from "./component/Navigation";
 import Footer from "./component/footer";
 import React from 'react';
+import FontAwesomeConfig from "./fontawesome";
 
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 
 export const metadata = {
@@ -27,6 +27,9 @@ export default async function RootLayout({ children }) {
   console.log('RootLayout 재렌더링');
   return (
     <html>
+      <head>
+        <FontAwesomeConfig></FontAwesomeConfig>
+      </head>
       <body className="bg-gray-100"> {/* Ensure body has Tailwind classes if needed */}
         <Navigation></Navigation>
         <main>

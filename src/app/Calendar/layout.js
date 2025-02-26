@@ -3,10 +3,15 @@ import Schedule from '../component/schedule';
 import { supabase } from '../lib/supabase';
 
 const CalendarLayout = async ({ children }) => {
-  let schedules = await supabase
+  let { data: schedules, error } = await supabase
     .from('schedule')
     .select('*');
-  schedules = schedules.data;
+  
+  if (error) {
+    console.error(error);
+    schedules = [];
+  }
+
   console.log('Calendar layout 재렌더링');
 
   return (
