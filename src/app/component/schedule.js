@@ -1,4 +1,5 @@
 export default function Schedule({schedules, children}) {
+    
 
     return (<>
        <div className='container mx-auto p-4'>

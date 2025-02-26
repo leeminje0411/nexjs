@@ -1,11 +1,15 @@
 import React from 'react';
 import prisma from '../lib/prisma';
 import Schedule from '../component/schedule';
+import { supabase } from '../lib/supabase';
 
 const AboutLayout = async ({ children }) => {
-    const schedules = await prisma.schedule.findMany();
-        
-    console.log(schedules);
+    // const schedules = await prisma.schedule.findMany();
+      
+   let schedules = await supabase
+  .from('schedule')
+  .select('*');
+    schedules = schedules.data;
 
     return (
        
@@ -15,4 +19,4 @@ const AboutLayout = async ({ children }) => {
 
 export default AboutLayout;
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
