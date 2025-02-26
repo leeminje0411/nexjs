@@ -5,7 +5,7 @@ import {supabase} from "./lib/supabase";
 // import prisma from "./lib/prisma";
 
 export default async function Home() {
-
+  console.log('Root page 재렌더링');
      let schedules = await supabase
     .from('schedule')
     .select('*');
@@ -22,4 +22,4 @@ export default async function Home() {
   );
 }
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";

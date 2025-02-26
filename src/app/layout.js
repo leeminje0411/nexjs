@@ -20,6 +20,8 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
+  console.log('RootLayout 재렌더링');
   return (
     <html>
       <body className="bg-gray-100"> {/* Ensure body has Tailwind classes if needed */}

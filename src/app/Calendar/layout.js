@@ -10,6 +10,7 @@ const AboutLayout = async ({ children }) => {
   .from('schedule')
   .select('*');
     schedules = schedules.data;
+    console.log('Calendar layout 재렌더링');
 
     return (
        
