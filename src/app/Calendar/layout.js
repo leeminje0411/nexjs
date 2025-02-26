@@ -19,4 +19,4 @@ const AboutLayout = async ({ children }) => {
 
 export default AboutLayout;
 
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
