@@ -2,7 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";  // ✅ Tailwind가 적용된 글로벌 CSS 가져오기
 import Navigation from "./component/Navigation";
 import Footer from "./component/footer";
-import Just from "./justdo";
+import React from 'react';
+import Schedule from "./component/schedule";
+import { supabase } from "./lib/supabase";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -13,7 +15,11 @@ import Just from "./justdo";
 //   variable: "--font-geist-mono",
 //   subsets: ["latin"],
 // });
-
+  let schedules = await supabase
+    .from('schedule')
+    .select('*');
+  schedules = schedules.data;
+  
 
 export const metadata = {
   title: "Next js",
@@ -29,8 +35,9 @@ export default function RootLayout({ children }) {
         <Navigation></Navigation>
         <main>
           {children}
+            <Schedule schedules={schedules}></Schedule>
           <div className="flex min-h-screen items-center justify-center bg-gray-100">
-          <Just></Just>
+        
           </div>
         </main>
         <Footer></Footer>
