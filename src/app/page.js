@@ -9,9 +9,9 @@ export default async function Home() {
     .from('schedule')
     .select('*');
   schedules = schedules.data;
-      // <Schedule schedules={schedules}></Schedule>
+
   return (
-      <></>
+      <>      <Schedule schedules={schedules}></Schedule></>
   );
 }
 

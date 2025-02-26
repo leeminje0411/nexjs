@@ -3,8 +3,7 @@ import "@/app/globals.css";  // ✅ Tailwind가 적용된 글로벌 CSS 가져�
 import Navigation from "./component/Navigation";
 import Footer from "./component/footer";
 import React from 'react';
-import Schedule from "./component/schedule";
-import { supabase } from "./lib/supabase";
+
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -24,12 +23,7 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 
-    let schedules = await supabase
-    .from('schedule')
-    .select('*');
-    
-  schedules = schedules.data;
-  
+
   console.log('RootLayout 재렌더링');
   return (
     <html>
@@ -37,7 +31,7 @@ export default async function RootLayout({ children }) {
         <Navigation></Navigation>
         <main>
           {children}
-            <Schedule schedules={schedules}></Schedule>
+    
           <div className="flex min-h-screen items-center justify-center bg-gray-100">
         
           </div>
