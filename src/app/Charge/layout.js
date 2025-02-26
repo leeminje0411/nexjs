@@ -20,7 +20,7 @@ const Charge = async ({ children }) => {
                 <table className="w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
                     <thead className="bg-gray-800 text-white">
                         <tr>
-                            <th className="p-3 text-left">청구자</th>
+                            <th className="p-3 text-left">청구자d</th>
                             <th className="p-3 text-left">제목</th>
                             <th className="p-3 text-left">피청구인</th>
                             <th className="p-3 text-left">가격</th>
