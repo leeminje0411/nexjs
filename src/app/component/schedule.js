@@ -1,40 +1,41 @@
-export default function Schedule({schedules, children}) {
-    
+import React from 'react';
 
-    return (<>
-       <div className='container mx-auto p-4'>
-            <h1 className='text-4xl text-center text-blue-500 m-5'>일정</h1>
-            {children? children : null}
-           {/* 테이블 컨테이너 */}
-                <div className="overflow-x-auto">
-                <table className="w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
-                    {/* 테이블 헤더 */}
-                    <thead className="bg-blue-500 text-white text-center">
-                    <tr className="text-center">
-                        <th className="p-3 ">작성자</th>
-                        <th className="p-3 ">일정</th>
-                        <th className="p-3 ">날짜</th>
-                        <th className="p-3 ">시작 시간</th>
-                        <th className="p-3 ">종료 시간</th>
-                    </tr>
-                    </thead>
-
-                    {/* 테이블 바디 */}
-                    <tbody>
-                    {schedules.map((item) => (
-                        <tr key={item.id} className="border-b text-center hover:bg-gray-100">
-                            <td className="p-3">{item.writer}</td>
-                            <td className="p-3">{item.schedule}</td>
-                            <td className="p-3">{item.date}</td>
-                            <td className="p-3">{item.startTime}</td>
-                            <td className="p-3">{item.endTime}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
-                </div>
-        </div>
+export default function Schedule({ schedules, className }) {
+  return (
+    <div className={`container mx-auto p-4 ${className}`}>
+      <h1 className="text-4xl font-bold text-cente m-5">오늘의 일정</h1>
     
- </>)
-    
+      {/* 테이블 컨테이너: 수평 스크롤 가능 */}
+      <div className="overflow-x-auto">
+        {/* 모던 느낌을 위해 table-fixed + 약간의 줄/색상 정리 */}
+        <table className="table-fixed w-full text-sm text-left text-gray-700 border-collapse">
+          {/* 헤더: 검은색 바탕, 흰색 글씨 */}
+          <thead className="bg-black text-white uppercase text-xs">
+            <tr>
+              <th className="px-4 py-3 w-[15%]">작성자</th>
+              <th className="px-4 py-3 w-[30%]">일정</th>
+              <th className="px-4 py-3 w-[20%]">날짜</th>
+              <th className="px-4 py-3 w-[15%]">시작</th>
+              <th className="px-4 py-3 w-[15%]">종료</th>
+            </tr>
+          </thead>
+          <tbody>
+            {schedules.map(item => (
+              <tr
+                key={item.id}
+                // 짝수행, 홀수행 배경색 다르게 (줄무늬)
+                className="odd:bg-white even:bg-gray-50 border-b last:border-0 hover:bg-gray-100"
+              >
+                <td className="px-4 py-3 truncate">{item.writer}</td>
+                <td className="px-4 py-3 truncate">{item.schedule}</td>
+                <td className="px-4 py-3 whitespace-nowrap">{item.date}</td>
+                <td className="px-4 py-3">{item.startTime}</td>
+                <td className="px-4 py-3">{item.endTime}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 }

@@ -6,20 +6,26 @@ import clsx from "clsx";
 
 /** 폰트어썸 아이콘 예시 (필요 없으면 제거) */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faCompass, faBell, faBookOpen, faClock } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faCompass, faBell, faBookOpen, faClock, faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 export default function YoutubeStyleSidebar() {
   const pathname = usePathname();
 
   // 사이드바 항목 (유튜브 느낌)
-  const sidebarItems = [
-    { name: "홈", href: "/", icon: faHome },
-    { name: "탐색", href: "/explore", icon: faCompass },
-    { name: "구독", href: "/subscribe", icon: faBell },
-    { name: "보관함", href: "/library", icon: faBookOpen },
-    { name: "시청기록", href: "/history", icon: faClock },
-  ];
+//   const sidebarItems = [
+//     { name: "홈", href: "/", icon: faHome },
+//     { name: "탐색", href: "/explore", icon: faCompass },
+//     { name: "구독", href: "/subscribe", icon: faBell },
+//     { name: "보관함", href: "/library", icon: faBookOpen },
+//     { name: "시청기록", href: "/history", icon: faClock },
+//   ];
 
+    const sidebarItems= [
+      { name: "홈", href: "/", icon: faHome },
+      { name: "일정", href: "/Calendar", icon: faCalendar },
+      { name: "갤러리", href: "/Contact", icon: faCompass },
+      { name: "공지사항", href: "/Nofi", icon: faBell },
+    ];
   // 구독 채널(가상의 예시)
   const subscribedChannels = [
     { name: "내 채널", href: "/mychannel" },
@@ -29,7 +35,7 @@ export default function YoutubeStyleSidebar() {
   ];
 
   return (
-    <div className="flex">
+    <div className="flex h-screen">
       {/* 왼쪽 사이드바 (고정) */}
       <aside className="w-60 h-screen bg-white shadow-md flex flex-col">
         {/* 상단 로고 또는 제목 */}

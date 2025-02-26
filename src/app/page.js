@@ -1,13 +1,9 @@
-
 import React from 'react';
-import Schedule from "./component/schedule";
-import { supabase } from "./lib/supabase";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import Gallery from './gallery.js';
+import Schedule from './component/schedule.js';
+import { supabase } from './lib/supabase.js'; 
 
 export default async function Home() {
-  console.log('Root page 재렌더링');
-  
   let { data: schedules, error } = await supabase
     .from('schedule')
     .select('*');
@@ -18,10 +14,13 @@ export default async function Home() {
   }
 
   return (
-    <>
-
-      <Schedule schedules={schedules}></Schedule>
-    </>
+    <div>
+      <Gallery />
+      <div className="flex flex-wrap md:flex-nowrap">
+        <Schedule className="w-full sm:w-1/2" schedules={schedules} />
+        <div className="w-full sm:w-1/2 h-auto bg-amber-300"></div>
+      </div>
+    </div>
   );
 }
 

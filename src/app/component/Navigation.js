@@ -35,12 +35,12 @@ export default function Navigation() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // 최상단, 탭 메뉴(데스크톱용)
-  const topNavItems = [
-    { name: "홈", href: "/", icon: faHome },
-    { name: "일정", href: "/Calendar", icon: faCalendar },
-    { name: "갤러리", href: "/Contact", icon: faCompass },
-    { name: "공지사항", href: "/Nofi", icon: faBell },
-  ];
+  // const topNavItems = [
+  //   { name: "홈", href: "/", icon: faHome },
+  //   { name: "일정", href: "/Calendar", icon: faCalendar },
+  //   { name: "갤러리", href: "/Contact", icon: faCompass },
+  //   { name: "공지사항", href: "/Nofi", icon: faBell },
+  // ];
 
   // 사이드바(메인 섹션)
   // 유튜브 예시로는 홈, 탐색, Shorts, 구독, 보관함, 시청기록 ...
@@ -119,8 +119,8 @@ export default function Navigation() {
           검색
         </button>
       </form>
-
-      {/* 상단바 아래 탭(데스크톱 전용) */}
+{/* 
+      상단바 아래 탭(데스크톱 전용)
       <nav className="bg-white border-b hidden md:block">
         <ul className="flex space-x-4 p-2">
           {topNavItems.map((item, i) => (
@@ -138,7 +138,7 @@ export default function Navigation() {
             </li>
           ))}
         </ul>
-      </nav>
+      </nav> */}
 
       {/* 사이드바 (슬라이드 아웃) */}
       <aside
