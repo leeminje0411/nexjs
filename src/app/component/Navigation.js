@@ -1,85 +1,109 @@
-'use client';
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
+"use client";
+import React, { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
+
+// 폰트어썸 관련
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faHome,
+  faCompass,
+  faBell,
+  faBookOpen,
+  faClock,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserCircle,
+  faCalendar,
+  faCircleUser,
+} from "@fortawesome/free-regular-svg-icons";
 
 /**
- * Tailwind CSS를 사용하고 있다는 가정 하에 작성하였습니다.
- * 'react-icons'나 'fortawesome' 등을 쓰면 아이콘을 좀 더 이쁘게 꾸밀 수 있어요!
+ * Tailwind CSS가 적용되어 있다는 전제입니다.
+ * 여기에 유튜브 느낌의 사이드바를 좀 더 살렸어요. 
  */
 
 export default function Navigation() {
-  // 현재 라우트 경로 확인 (활성화 스타일 주기 위함)
   const pathname = usePathname();
 
-  // 사이드 메뉴 열림/닫힘
+  // 사이드바 열림/닫힘 여부
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // 검색어
-  const [searchQuery, setSearchQuery] = useState('');
+  // 모바일 검색어
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // 유튜브처럼 상단에 표시할 메뉴들
+  // 최상단, 탭 메뉴(데스크톱용)
   const topNavItems = [
-    { name: '홈', href: '/' },
-    { name: '일정', href: '/Calendar' },
-    { name: '갤러리', href: '/Contact' },
-    { name: '공지사항', href: '/Nofi' },
+    { name: "홈", href: "/", icon: faHome },
+    { name: "일정", href: "/Calendar", icon: faCalendar },
+    { name: "갤러리", href: "/Contact", icon: faCompass },
+    { name: "공지사항", href: "/Nofi", icon: faBell },
   ];
 
-  // 사이드 메뉴에서 표시할 예시 항목
-  const sideMenuItems = [
-    { name: '내 채널', href: '/mychannel' },
-    { name: '구독', href: '/subscribe' },
-    { name: '시청기록', href: '/history' },
-    { name: '좋아요 표시한 동영상', href: '/liked' },
-    // ...원하시는 메뉴 더 추가 가능
+  // 사이드바(메인 섹션)
+  // 유튜브 예시로는 홈, 탐색, Shorts, 구독, 보관함, 시청기록 ...
+  const mainSidebarItems = [
+    { name: "홈", href: "/", icon: faHome },
+    { name: "탐색", href: "/explore", icon: faCompass },
+    { name: "구독", href: "/subscribe", icon: faBell },
+    { name: "보관함", href: "/library", icon: faBookOpen },
+    { name: "시청기록", href: "/history", icon: faClock },
   ];
 
+  // 사이드바(구독 섹션) - 예시
+  // 실제론 로그인 상태나 구독 채널 목록을 불러와서 렌더링할 수 있음
+  const subscribedChannels = [
+    { name: "내 채널", href: "/mychannel" },
+    { name: "React 공식", href: "/react" },
+    { name: "Next.js 공식", href: "/nextjs" },
+    { name: "Tailwind CSS", href: "/tailwind" },
+  ];
+
+  // 사이드바 토글 핸들러
   const handleSidebarToggle = () => {
     setIsSidebarOpen((prev) => !prev);
   };
 
+  // 검색 핸들러(모바일 전용)
   const handleSearch = (e) => {
     e.preventDefault();
-    // 실제 검색 로직은 여기서 처리!
     alert(`검색어: ${searchQuery}`);
   };
 
   return (
     <div className="relative">
-      {/* 상단바 (헤더) */}
+      {/* 상단바 (헤더 영역) */}
       <header className="flex items-center justify-between bg-black px-4 py-2 text-white">
-        {/* 왼쪽 햄버거 버튼 */}
+        <div className="flex items-center space-x-3">
+          {/* 햄버거 버튼 */}
+          <button
+            className="text-2xl hover:bg-gray-800 p-2 rounded-full"
+            onClick={handleSidebarToggle}
+            aria-label="Toggle sidebar"
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </button>
 
-        <div className='flex'>
-
-        <button
-          className="mr-4 text-2xl hover:bg-red-700 p-2 rounded-full"
-          onClick={handleSidebarToggle}
-          aria-label="Toggle sidebar"
-        >
-          ☰
-        </button>
-
-        {/* 로고 (유튜브처럼) */}
-        <Link href="/" className="flex items-center text-xl font-bold">
-          <span className="text-white">우리 가족 사이트</span>
-        </Link>
-
+          {/* 로고 (유튜브처럼) */}
+          <Link href="/" className="flex items-center text-xl font-bold">
+            <span className="text-white text-2xl">우리 가족 사이트</span>
+          </Link>
         </div>
 
- 
-
-        {/* 우측 아이콘들 예시 (알림, 프로필 등) */}
+        {/* 오른쪽 아이콘들 (예: 일정, 프로필) */}
         <div className="flex items-center space-x-3">
-          <button className="hover:bg-red-700 p-2 rounded-full">
-     </button>
-          <button className="hover:bg-red-700 p-2 rounded-full">👤</button>
+          <button className="hover:bg-gray-800 p-2 rounded-full">
+            <FontAwesomeIcon icon={faCalendar} className="text-2xl" />
+          </button>
+          <button className="hover:bg-gray-800 p-2 rounded-full">
+            <FontAwesomeIcon icon={faCircleUser} className="text-2xl" />
+          </button>
         </div>
       </header>
 
-      {/* 모바일 전용 검색창 (화면 폭이 좁을 때) */}
+      {/* 검색창 (모바일 전용, 데스크톱에선 숨김) */}
       <form onSubmit={handleSearch} className="flex md:hidden p-2 bg-gray-100">
         <input
           type="text"
@@ -96,7 +120,7 @@ export default function Navigation() {
         </button>
       </form>
 
-      {/* 상단바 아래에 표시할 네비게이션 탭 (원한다면) */}
+      {/* 상단바 아래 탭(데스크톱 전용) */}
       <nav className="bg-white border-b hidden md:block">
         <ul className="flex space-x-4 p-2">
           {topNavItems.map((item, i) => (
@@ -104,11 +128,12 @@ export default function Navigation() {
               <Link
                 href={item.href}
                 className={clsx(
-                  'px-3 py-1 rounded-md hover:bg-gray-200',
-                  pathname === item.href && 'bg-gray-300'
+                  "flex items-center space-x-1 px-3 py-1 rounded-md hover:bg-gray-200",
+                  pathname === item.href && "bg-gray-300"
                 )}
               >
-                {item.name}
+                <FontAwesomeIcon icon={item.icon} />
+                <span>{item.name}</span>
               </Link>
             </li>
           ))}
@@ -118,13 +143,14 @@ export default function Navigation() {
       {/* 사이드바 (슬라이드 아웃) */}
       <aside
         className={clsx(
-          'fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform',
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          "fixed top-0 left-0 h-full w-64 bg-white shadow-md transform transition-transform overflow-y-auto",
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         )}
         style={{ zIndex: 1000 }}
       >
+        {/* 사이드바 상단 */}
         <div className="flex items-center justify-between p-4 bg-gray-100">
-          <h2 className="text-xl font-semibold">메뉴</h2>
+          <h2 className="text-xl font-semibold">유튜브 스타일 메뉴</h2>
           <button
             onClick={handleSidebarToggle}
             className="text-xl p-2 hover:bg-gray-200 rounded-full"
@@ -132,25 +158,46 @@ export default function Navigation() {
             ✕
           </button>
         </div>
-        <ul className="p-4 space-y-2">
-          {sideMenuItems.map((item, i) => (
+
+        {/* 메인 섹션 */}
+        <ul className="p-4 space-y-2 border-b">
+          {mainSidebarItems.map((item, i) => (
             <li key={i}>
               <Link
                 href={item.href}
                 className={clsx(
-                  'block px-4 py-2 rounded-md hover:bg-gray-200',
-                  pathname === item.href && 'bg-gray-300'
+                  "flex items-center space-x-4 px-4 py-2 rounded-md hover:bg-gray-200",
+                  pathname === item.href && "bg-gray-300"
                 )}
                 onClick={() => setIsSidebarOpen(false)}
               >
-                {item.name}
+                <FontAwesomeIcon icon={item.icon} className="text-xl" />
+                <span>{item.name}</span>
               </Link>
             </li>
           ))}
         </ul>
+
+        {/* 구독 섹션 (유튜브에서 자주 보이는 부분) */}
+        <div className="p-4 space-y-2">
+          <h3 className="text-md font-semibold text-gray-500">구독</h3>
+          <ul className="space-y-1">
+            {subscribedChannels.map((channel, i) => (
+              <li key={i}>
+                <Link
+                  href={channel.href}
+                  className="block px-4 py-2 rounded-md hover:bg-gray-200"
+                  onClick={() => setIsSidebarOpen(false)}
+                >
+                  {channel.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </aside>
 
-      {/* 오버레이: 사이드바 열렸을 때 뒷배경 클릭하면 닫히게 */}
+      {/* 사이드바 배경 오버레이 (열렸을 때 클릭하면 닫힘) */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50"

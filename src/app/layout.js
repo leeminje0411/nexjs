@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";  // ✅ Tailwind가 적용된 글로벌 CSS 가져오기
 import Navigation from "./component/Navigation";
+import SideNavigation from "./component/sideNavigation";
 import Footer from "./component/footer";
 import React from 'react';
 import FontAwesomeConfig from "./fontawesome";
@@ -32,9 +33,12 @@ export default async function RootLayout({ children }) {
       </head>
       <body className="bg-gray-100"> {/* Ensure body has Tailwind classes if needed */}
         <Navigation></Navigation>
+        
         <main>
+          <div className="flex">
+          <SideNavigation></SideNavigation>
           {children}
-    
+          </div>
           <div className="flex min-h-screen items-center justify-center bg-gray-100">
         
           </div>

@@ -19,14 +19,7 @@ export default async function Home() {
 
   return (
     <>
-      <div>
- 
-        <FontAwesomeIcon icon={faCalendar} />
-        <FontAwesomeIcon icon={faCalendar} />
-        <FontAwesomeIcon icon={faCalendar} />
-        <FontAwesomeIcon icon={faCalendar} />
-        <FontAwesomeIcon icon={faCalendar} />
-      </div>
+
       <Schedule schedules={schedules}></Schedule>
     </>
   );
