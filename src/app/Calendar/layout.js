@@ -1,6 +1,6 @@
 import React from 'react';
 import prisma from '../lib/prisma';
-import Schedule from '../component/schedule';
+import Schedule from './index'
 
 const AboutLayout = async ({ children }) => {
     const schedules = await prisma.schedule.findMany();

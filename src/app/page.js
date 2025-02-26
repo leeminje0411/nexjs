@@ -12,7 +12,7 @@ export default async function Home() {
     
            <div className='container mx-auto p-4'>
             <h1 className='text-4xl text-center text-blue-500 m-5'>일정</h1>
-            {children? children : null}
+            {/* {children? children : null} */}
            {/* 테이블 컨테이너 */}
                 <div className="overflow-x-auto">
                 <table className="w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
