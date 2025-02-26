@@ -11,7 +11,7 @@ export default function Navigation() {
   const navItems = [
     { name: '일정', href: '/Calendar' },
     { name: '갤러리', href: '/Contact' },
-    { name: '청구서', href: '/Charge' },
+  
     { name: '공지사항', href: '/Nofi' },
   ];
 
