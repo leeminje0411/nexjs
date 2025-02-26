@@ -1,5 +1,4 @@
 import React from 'react';
-import prisma from '../lib/prisma';
 import Schedule from '../component/schedule';
 import { supabase } from '../lib/supabase';
 
