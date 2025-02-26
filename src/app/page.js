@@ -17,4 +17,4 @@ export default async function Home() {
   );
 }
 
-export const revalidate = 1
+export const dynamic = "force-dynamic";

@@ -15,4 +15,4 @@ const AboutLayout = async ({ children }) => {
 
 export default AboutLayout;
 
-export const revalidate = 1
+export const dynamic = "force-dynamic";
